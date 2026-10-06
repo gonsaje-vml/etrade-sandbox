@@ -1,4 +1,5 @@
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
+import bindPrivacyChoices from '../../scripts/privacy.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 const ROLES = new Set(['brand', 'contact', 'social', 'column']);
@@ -121,4 +122,5 @@ export default async function decorate(block) {
   }
   block.replaceChildren(...(content ? [content] : []));
   block.hidden = !content;
+  bindPrivacyChoices(block);
 }

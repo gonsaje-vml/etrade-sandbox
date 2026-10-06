@@ -109,6 +109,10 @@
   list-style: none;
 }
 
+.footer .footer-column li p {
+  margin: 0;
+}
+
 .footer .footer-column li {
   margin-top: 20px;
   padding-bottom: 10px;
@@ -257,4 +261,17 @@
   .footer .footer-navigation:has(.footer-column:nth-child(3):last-child) {
     grid-template-columns: repeat(3, minmax(0, 28.5714%));
   }
+}
+
+.footer .footer-column a:has(.icon-privacy-options) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer .footer-column .icon-privacy-options {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 31.27px;
+  height: 15px;
 }
