@@ -1,12 +1,12 @@
-# Seprator
+# Separator
 
-An authored decorative divider matching the rounded stepped line on the E*TRADE homepage. The block name is **Seprator** (the requested spelling), so the delivered markup is `.seprator`.
+An authored decorative divider matching the rounded stepped line on the E*TRADE homepage. The block name is **Separator**, so the delivered markup is `.separator`.
 
 ## Authoring
 
 Put the block in its own section between the two content sections, with a section break (`---`) before and after the table. Use two columns for setting names and values. Rows can be reordered or omitted; unknown rows and extra cells are ignored.
 
-| Seprator | |
+| Separator | |
 | --- | --- |
 | First section color | #121213 |
 | Second section color | #fafafa |

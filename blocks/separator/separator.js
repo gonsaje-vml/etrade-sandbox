@@ -26,25 +26,25 @@ export default function decorate(block) {
     if (name) settings[name] = value.textContent.trim();
   });
 
-  block.style.setProperty('--seprator-first-color', color(settings['first-section-color'], '#121213'));
-  block.style.setProperty('--seprator-second-color', color(settings['second-section-color'], '#fafafa'));
+  block.style.setProperty('--separator-first-color', color(settings['first-section-color'], '#121213'));
+  block.style.setProperty('--separator-second-color', color(settings['second-section-color'], '#fafafa'));
   const desktopHeight = height(settings.height);
   const mobileHeight = height(settings['mobile-height']);
-  if (desktopHeight) block.style.setProperty('--seprator-height', desktopHeight);
-  if (mobileHeight) block.style.setProperty('--seprator-mobile-height', mobileHeight);
+  if (desktopHeight) block.style.setProperty('--separator-height', desktopHeight);
+  if (mobileHeight) block.style.setProperty('--separator-mobile-height', mobileHeight);
   const bend = position(settings['line-break-location'] || settings['line-break']);
   const lineColor = settings['line-color'] === 'none' ? 'none' : color(settings['line-color'], null);
-  if (lineColor) block.style.setProperty('--seprator-line-color', lineColor);
+  if (lineColor) block.style.setProperty('--separator-line-color', lineColor);
 
   const svg = document.createElementNS(SVG_NS, 'svg');
-  svg.classList.add('seprator-art');
+  svg.classList.add('separator-art');
   svg.setAttribute('preserveAspectRatio', 'none');
   svg.setAttribute('aria-hidden', 'true');
   svg.setAttribute('focusable', 'false');
   const surface = document.createElementNS(SVG_NS, 'path');
-  surface.classList.add('seprator-surface');
+  surface.classList.add('separator-surface');
   const line = document.createElementNS(SVG_NS, 'path');
-  line.classList.add('seprator-line');
+  line.classList.add('separator-line');
   svg.append(surface, line);
   block.replaceChildren(svg);
   // This is decorative artwork, not a semantic separator or a focus target.
@@ -69,7 +69,7 @@ export default function decorate(block) {
     line.setAttribute('d', path);
     // Equal surfaces need an outline to keep the production-style line visible.
     if (!lineColor) {
-      block.style.setProperty('--seprator-line-color', sameColor ? '#ccc' : 'none');
+      block.style.setProperty('--separator-line-color', sameColor ? '#ccc' : 'none');
     }
   };
   draw();
