@@ -20,3 +20,7 @@ Edge Delivery Services. Read a block first. Omissions are in the repo or known.
 - A PR without a `{branch}--etrade--AdobeDrago.aem.page/{path}` link is rejected.
 - All committed files are served. Use `.hlxignore`.
 - Skills: `/plugin marketplace add adobe/skills`, then `aem-edge-delivery-services` (24 skills, incl. `docs-search`).
+
+## Homepage migration record
+
+Keep `docs/homepage-migration-log.md` updated when changing homepage blocks, shared helpers, or DA authoring. Record implemented behavior, files and dependencies, content changes, validation, commit references, and open items separately so the work can be repeated in the original repository.
