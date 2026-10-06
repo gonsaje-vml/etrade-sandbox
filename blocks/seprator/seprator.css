@@ -1,0 +1,44 @@
+/* A dedicated divider section has no EDS gutters or vertical section spacing. */
+main > .section.seprator-container:has(> .seprator-wrapper:only-child) {
+  margin: 0;
+  padding: 0;
+}
+
+main > .section > .seprator-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.seprator {
+  position: relative;
+  width: 100%;
+  height: var(--seprator-mobile-height, var(--seprator-height, 45px));
+  overflow: hidden;
+  background-color: var(--seprator-first-color, #121213);
+  line-height: 0;
+  pointer-events: none;
+}
+
+.seprator .seprator-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.seprator .seprator-surface {
+  fill: var(--seprator-second-color, #fafafa);
+}
+
+.seprator .seprator-line {
+  fill: none;
+  stroke: var(--seprator-line-color, none);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (width >= 768px) {
+  .seprator {
+    height: var(--seprator-height, 81px);
+  }
+}
