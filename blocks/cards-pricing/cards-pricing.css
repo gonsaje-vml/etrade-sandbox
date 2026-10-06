@@ -1,7 +1,8 @@
 .cards-pricing {
   color: #242424;
-  font-size: 15px;
-  line-height: 22px;
+  letter-spacing: -0.21px;
+  font-size: 16px;
+  line-height: 20px;
   overflow-wrap: anywhere;
 }
 
@@ -25,7 +26,7 @@
   min-width: 0;
   border: 1px solid #e2e2e2;
   border-radius: 16px;
-  padding: 24px;
+  padding: 16px;
   background: #fff;
 }
 
@@ -34,11 +35,12 @@
 }
 
 .cards-pricing .cards-pricing-body :is(h1, h2, h3, h4, h5, h6) {
-  margin: 0 0 10px;
+  margin: 0 0 26px;
   color: inherit;
   font-size: 24px;
   font-weight: 600;
   line-height: 28px;
+  letter-spacing: -0.4px;
 }
 
 .cards-pricing .cards-pricing-body p {
@@ -47,16 +49,17 @@
 }
 
 .cards-pricing .cards-pricing-body .cards-pricing-value {
-  margin-bottom: 14px;
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 64px;
+  margin-bottom: 25.1px;
+  padding: 48px 0;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 52px;
   letter-spacing: -1px;
 }
 
 .cards-pricing .cards-pricing-has-value h3 {
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 .cards-pricing .cards-pricing-body .cards-pricing-rate {
@@ -67,17 +70,47 @@
 
 .cards-pricing .cards-pricing-actions {
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 25.0938px;
 }
 
-@media (width >= 600px) {
+@media (width >= 768px) {
   .cards-pricing > ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (width >= 900px) {
-  .cards-pricing > ul {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (width >= 768px) {
+  .cards-pricing > ul > li {
+    padding: 24px;
+  }
+
+  .cards-pricing .cards-pricing-body :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+@media (width >= 768px) {
+  .cards-pricing .cards-pricing-body .cards-pricing-value {
+    padding: 60px 0;
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+
+.cards-pricing .cards-pricing-body > p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width < 768px) {
+  .cards-pricing .cards-pricing-actions {
+    padding-top: 21px;
+  }
+}
+
+@media (width >= 768px) {
+  .cards-pricing .cards-pricing-body h3.cards-pricing-compact-title {
+    font-size: 20px;
+    line-height: 32px;
   }
 }

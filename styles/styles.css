@@ -399,7 +399,7 @@ body.homepage main > .section {
   padding: 40px 0;
 }
 
-body.homepage main > .section > div {
+body.homepage main > .section:where(:not([data-section-kind])) > div {
   box-sizing: border-box;
   max-width: 1220px;
   padding: 0 20px;
@@ -430,9 +430,82 @@ body.homepage main > .section.pricing-intro {
   text-align: center;
 }
 
-body.homepage .pricing-intro .homepage-actions {
+body.homepage .pricing-intro .etrade-actions {
   justify-content: center;
   margin-top: 24px;
+}
+
+body.homepage .pricing-intro h2 {
+  margin: 0 0 20px;
+  letter-spacing: -0.4px;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+body.homepage main > .section.columns-feature-container {
+  padding: 60px 0;
+}
+
+body.homepage main > .section.banking-feature {
+  background: #1c1a1e;
+}
+
+body.homepage main sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 65%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+body.homepage .widget-calculator-container > .default-content-wrapper {
+  text-align: center;
+}
+
+body.homepage .awards-section h2 {
+  margin: 0 0 32px;
+  text-align: center;
+}
+
+body.homepage .widget-calculator-container > .default-content-wrapper h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+@media (width >= 768px) {
+  body.homepage main > .section.pricing-intro {
+    text-align: left;
+  }
+
+  body.homepage .pricing-intro .columns > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  body.homepage .pricing-intro .columns > div > div:first-child {
+    flex: 7;
+  }
+
+  body.homepage .pricing-intro .columns > div > div:last-child {
+    flex: 5;
+  }
+
+  body.homepage .pricing-intro h2 {
+    margin-bottom: 40px;
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  body.homepage .pricing-intro .etrade-actions {
+    margin: 0;
+  }
+
+  body.homepage .widget-calculator-container > .default-content-wrapper h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
 }
 
 body.homepage main > .section.pricing-cards {
@@ -450,7 +523,24 @@ body.homepage .pricing-cards .default-content-wrapper {
   text-align: center;
 }
 
-body.homepage .awards-section h2 {
-  margin: 0 0 32px;
-  text-align: center;
+
+main .section:has(> .widget-calculator-wrapper > .widget-calculator) {
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+}
+
+.section > .widget-calculator-wrapper:has(> .widget-calculator) {
+  box-sizing: border-box;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+
+@media (width >= 768px) {
+  body.homepage main > .section:where(:not([data-section-kind])) > div {
+    max-width: 1200px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }

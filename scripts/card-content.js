@@ -16,6 +16,7 @@ export default function decorateCards(block, name) {
       [...heading.attributes].forEach(({ name: key, value }) => {
         replacement.setAttribute(key, value);
       });
+      if (heading.tagName === 'H4') replacement.classList.add(`${name}-compact-title`);
       replacement.append(...heading.childNodes);
       heading.replaceWith(replacement);
     }

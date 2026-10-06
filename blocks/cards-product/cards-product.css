@@ -1,7 +1,8 @@
 .cards-product {
   color: #242424;
-  font-size: 15px;
-  line-height: 22px;
+  letter-spacing: -0.21px;
+  font-size: 16px;
+  line-height: 20px;
   overflow-wrap: anywhere;
 }
 
@@ -25,7 +26,7 @@
   min-width: 0;
   border: 1px solid #e2e2e2;
   border-radius: 16px;
-  padding: 24px;
+  padding: 16px;
   background: #fff;
 }
 
@@ -34,15 +35,16 @@
 }
 
 .cards-product .cards-product-body :is(h1, h2, h3, h4, h5, h6) {
-  margin: 0 0 10px;
+  margin: 0 0 26px;
   color: inherit;
   font-size: 24px;
   font-weight: 600;
   line-height: 28px;
+  letter-spacing: -0.4px;
 }
 
 .cards-product .cards-product-body p {
-  margin: 0 0 10px;
+  margin: 0 0 9.1px;
   color: inherit;
 }
 
@@ -60,18 +62,43 @@
 }
 
 .cards-product .cards-product-body .cards-product-rate {
-  font-size: 28px;
-  line-height: 32px;
-  letter-spacing: -0.5px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.21px;
 }
 
 .cards-product .cards-product-actions {
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 16px;
 }
 
-@media (width >= 600px) {
+@media (width >= 768px) {
   .cards-product > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 768px) {
+  .cards-product > ul > li {
+    padding: 24px;
+  }
+
+  .cards-product .cards-product-body :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+@media (width >= 768px) {
+  .cards-product .cards-product-body .cards-product-rate {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media (width < 768px) {
+  .cards-product .cards-product-actions {
+    padding-top: 21px;
   }
 }

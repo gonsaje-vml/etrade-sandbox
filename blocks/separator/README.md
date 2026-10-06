@@ -41,3 +41,6 @@ The SVG and configuration are decorative and hidden from assistive technology. T
 ## Homepage section integration
 
 The real EDS section breaks remain before and after each dedicated Separator table. They still group blocks and apply Section Metadata. The shared section-layout helper identifies the dedicated divider section and removes its outer spacing/gutters; it does not merge sections or move their content. The neighboring sections retain their authored backgrounds and internal padding. A Separator sharing a section with content keeps that section's normal layout.
+
+
+Shared homepage content-gutter rules must exclude dedicated `data-section-kind` sections, including separators. Verify the separator block and SVG bounds rather than only the wrapper: both should start at the viewport's left edge and span its content width at desktop and mobile sizes. When a neighboring section uses `#1c1a1e`, author that explicit surface color; the `dark` shortcut resolves to `#121213`.

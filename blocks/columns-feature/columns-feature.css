@@ -3,11 +3,11 @@
 
   box-sizing: border-box;
   border-radius: 16px;
-  padding: 20px;
+  padding: 20px 20px 0;
   background: #fafafa;
   color: #242424;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 20px;
   overflow-wrap: anywhere;
 }
 
@@ -43,20 +43,32 @@
   font-size: 32px;
   font-weight: 600;
   line-height: 36px;
-  letter-spacing: -0.6px;
+  letter-spacing: -0.4px;
 }
 
 .columns-feature .columns-feature-copy p {
   margin: 0 0 20px;
 }
 
+.columns-feature .columns-feature-media p {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.columns-feature .columns-feature-copy h2 + p {
+  margin-bottom: 40px;
+}
+
 .columns-feature .columns-feature-copy > p:first-child:has(+ h2) {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
+  margin-bottom: 16px;
 }
 
 .columns-feature .columns-feature-actions {
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 .columns-feature .columns-feature-media :is(picture, img) {
@@ -69,10 +81,10 @@
   border-radius: 16px;
 }
 
-@media (width >= 900px) {
+@media (width >= 768px) {
   .columns-feature > div {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 64px;
+    gap: 20px;
   }
 
   .columns-feature .columns-feature-copy {
@@ -86,5 +98,44 @@
   .columns-feature .columns-feature-copy h2 {
     font-size: 44px;
     line-height: 48px;
+  }
+}
+
+.columns-feature.band {
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+
+@media (width >= 768px) {
+  .columns-feature .columns-feature-copy {
+    box-sizing: border-box;
+    width: calc(83.3333% + 16.6667px);
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .columns-feature.band .columns-feature-copy h2 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+}
+
+@media (width >= 992px) {
+  .columns-feature .columns-feature-copy:has(> p:first-child + h2) h2 {
+    max-width: 82.6135%;
+  }
+}
+
+@media (width >= 768px) and (width < 992px) {
+  .columns-feature .columns-feature-copy {
+    width: 100%;
+    padding: 0;
+  }
+
+  .columns-feature .columns-feature-copy:has(> p:first-child + h2) h2 {
+    max-width: calc(83.3333% - 3.3333px);
   }
 }
