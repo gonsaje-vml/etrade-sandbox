@@ -548,3 +548,13 @@ main .section:has(> .widget-calculator-wrapper > .widget-calculator) {
     padding-left: 10px;
   }
 }
+
+body.homepage .hero-dark-container > .banner-offer-wrapper {
+  margin-top: 40px;
+}
+
+@media (width < 768px) {
+  body.homepage .hero-dark-container > .banner-offer-wrapper {
+    margin-top: 60px;
+  }
+}
