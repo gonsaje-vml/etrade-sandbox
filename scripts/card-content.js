@@ -31,7 +31,7 @@ export default function decorateCards(block, name) {
     [...body.querySelectorAll(':scope > p')].forEach((paragraph) => {
       const action = standaloneAction(paragraph);
       if (!action) return;
-      actions.append(decorateAction(action));
+      actions.append(decorateAction(action, block.classList.contains('text-links') ? 'secondary' : 'outline'));
       paragraph.remove();
     });
     item.append(body);

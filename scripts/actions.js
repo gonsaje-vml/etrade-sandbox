@@ -40,14 +40,14 @@ export function decorateAction(link, kind, prefix) {
   return link;
 }
 
-export function groupActions(content, prefix) {
+export function groupActions(content, prefix, primaryKind = 'primary') {
   const actions = document.createElement('div');
   actions.className = `etrade-actions ${prefix}-actions`;
   [...content.querySelectorAll(':scope > p')].forEach((paragraph) => {
     const link = standaloneAction(paragraph);
     if (!link) return;
     if (!actions.children.length) paragraph.before(actions);
-    decorateAction(link, actions.children.length ? 'secondary' : 'primary', prefix);
+    decorateAction(link, actions.children.length ? 'secondary' : primaryKind, prefix);
     actions.append(link);
     paragraph.remove();
   });

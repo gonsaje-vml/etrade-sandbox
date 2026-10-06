@@ -212,7 +212,9 @@ async function loadLazy(doc) {
   await loadSections(main);
   if (doc.body.classList.contains('homepage')) {
     main.querySelectorAll('.default-content-wrapper').forEach((content) => {
-      groupActions(content, 'homepage');
+      const secondary = content.closest('.awards-section')
+        || content.closest('.section')?.querySelector('.accordion-faq');
+      groupActions(content, 'homepage', secondary ? 'secondary' : 'primary');
     });
   }
 
