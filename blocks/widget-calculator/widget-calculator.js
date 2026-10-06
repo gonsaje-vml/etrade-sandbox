@@ -1,3 +1,5 @@
+import { decorateAction, standaloneAction } from '../../scripts/actions.js';
+
 let sequence = 0;
 
 function element(tag, className, text) {
@@ -65,8 +67,8 @@ function adjacentContent(block, content) {
   const descriptions = [];
   const legacy = {};
   nodes.slice(headingIndex + 1).forEach((node) => {
-    const link = node.querySelector('a');
-    if (link && node.textContent.trim() === link.textContent.trim()) {
+    const link = standaloneAction(node);
+    if (link) {
       if (!legacy.primary) legacy.primary = node;
       else if (!legacy.secondary) legacy.secondary = node;
       else descriptions.push(node);
@@ -103,20 +105,15 @@ function promoCard(content) {
     card.append(content.code);
   }
   const actions = element('div', 'actions');
+  actions.classList.add('etrade-actions');
   ['primary', 'secondary'].forEach((role) => {
     const source = content[role];
-    const link = source?.matches('a') ? source : source?.querySelector('a');
+    const link = source?.matches('a') ? source : source && standaloneAction(source);
     if (!link) return;
-    link.className = `widget-calculator-${role}`;
-    link.removeAttribute('role');
+    decorateAction(link, role, 'widget-calculator');
     const action = element('div', 'action');
     action.append(link);
     if (source !== link) source.remove();
-    link.querySelectorAll('em').forEach((icon) => {
-      if (icon.textContent.trim() === 'arrow_forward') icon.remove();
-    });
-    if (role === 'secondary') link.append(document.createTextNode(' '));
-    if (link.title.includes('arrow_forward')) link.title = link.title.replace('arrow_forward', '').trim();
     actions.append(action);
   });
   if (actions.children.length) card.append(actions);

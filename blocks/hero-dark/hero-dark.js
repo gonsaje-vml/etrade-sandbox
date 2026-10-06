@@ -1,15 +1,9 @@
+import { decorateAction, standaloneAction } from '../../scripts/actions.js';
+
 function container(className) {
   const node = document.createElement('div');
   node.className = `hero-dark-${className}`;
   return node;
-}
-
-function standaloneLink(paragraph) {
-  const links = paragraph.querySelectorAll('a[href]');
-  const [link] = links;
-  if (links.length !== 1 || paragraph.querySelector('img, picture')
-    || paragraph.textContent.trim() !== link.textContent.trim()) return null;
-  return link;
 }
 
 export default function decorate(block) {
@@ -22,10 +16,11 @@ export default function decorate(block) {
   const copy = container('copy');
   const media = container('media');
   const actions = container('actions');
+  actions.classList.add('etrade-actions');
   const cells = [...block.children].flatMap((row) => [...row.children]);
   const imageCell = cells.find((cell) => image && cell.contains(image));
   const hasCaption = cells.length > 1 && imageCell && !imageCell.querySelector('h1, h2, h3')
-    && ![...imageCell.querySelectorAll('p')].some(standaloneLink);
+    && ![...imageCell.querySelectorAll('p')].some(standaloneAction);
 
   if (heading) {
     heading.classList.add('hero-dark-heading');
@@ -51,19 +46,10 @@ export default function decorate(block) {
 
   // Only standalone links are CTAs. Inline links stay in the supporting copy.
   [...copy.querySelectorAll('p')].forEach((paragraph) => {
-    const link = standaloneLink(paragraph);
+    const link = standaloneAction(paragraph);
     if (!link) return;
     const primary = !actions.children.length;
-    link.className = `hero-dark-${primary ? 'primary' : 'secondary'}`;
-    link.removeAttribute('role');
-    link.querySelectorAll('em, i, .icon').forEach((icon) => {
-      if (icon.textContent.trim() === 'arrow_forward'
-        || icon.classList.contains('icon-arrow-forward')) icon.remove();
-    });
-    if (link.title.includes('arrow_forward')) {
-      link.title = link.title.replace('arrow_forward', '').trim();
-    }
-    if (!primary) link.append(document.createTextNode(' '));
+    decorateAction(link, primary ? 'primary' : 'secondary', 'hero-dark');
     const action = container('action');
     action.append(link);
     actions.append(action);

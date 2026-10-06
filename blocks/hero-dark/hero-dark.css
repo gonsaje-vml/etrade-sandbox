@@ -1,22 +1,6 @@
-main .section.hero-dark-container {
-  margin: 0;
-  padding: 20px 0 40px;
-  background: var(--brand-dark-bg, #121213);
-}
-
-/* The imported homepage includes a plain-text breadcrumb before its hero. */
-.hero-dark-container > .hero-dark-breadcrumb {
-  display: none;
-}
-
-main .section > .hero-dark-wrapper {
-  box-sizing: border-box;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .hero-dark {
+  --action-link-color: #ab80ff;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
@@ -86,17 +70,19 @@ main .hero-dark .hero-dark-copy a:any-link {
 }
 
 .hero-dark .hero-dark-actions {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 24px;
   align-items: center;
-  margin: 0 -10px;
+  margin: 0;
 }
 
 .hero-dark .hero-dark-action {
   min-width: 0;
   max-width: 100%;
   margin-bottom: 15px;
-  padding: 0 10px;
+  padding: 0;
   text-align: center;
 }
 
@@ -119,7 +105,8 @@ main .hero-dark a.hero-dark-primary:any-link {
 }
 
 main .hero-dark a.hero-dark-secondary:any-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   max-width: 100%;
   margin: 0 0 10px;
   padding: 9px 0;
@@ -128,17 +115,6 @@ main .hero-dark a.hero-dark-secondary:any-link {
   line-height: 24px;
   letter-spacing: -0.21px;
   text-decoration: none;
-}
-
-.hero-dark .hero-dark-secondary::after {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin: -3px 5px -1px 0;
-  background: currentcolor;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E") center / contain no-repeat;
-  vertical-align: middle;
-  content: '';
 }
 
 main .hero-dark a.hero-dark-primary:hover {
@@ -176,10 +152,6 @@ main .hero-dark .hero-dark-media p,
 }
 
 @media (width >= 768px) {
-  main .section > .hero-dark-wrapper {
-    padding: 0 10px;
-  }
-
   main .hero-dark :is(h1, h2, h3).hero-dark-heading {
     font-size: 48px;
     line-height: 1.0833;
@@ -194,7 +166,7 @@ main .hero-dark .hero-dark-media p,
   }
 
   .hero-dark .hero-dark-actions {
-    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    justify-content: flex-start;
   }
 
   .hero-dark .hero-dark-action {
@@ -236,7 +208,7 @@ main .hero-dark .hero-dark-media p,
   }
 
   .hero-dark .hero-dark-actions {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 16px 36px;
   }
 
   .hero-dark .hero-dark-media {
