@@ -442,6 +442,10 @@ body.homepage .pricing-intro h2 {
   line-height: 32px;
 }
 
+body.homepage main > .section.hero-dark-container:has(.hero-dark.has-video) {
+  padding-top: 20px;
+}
+
 body.homepage main > .section.columns-feature-container {
   padding: 60px 0;
 }
