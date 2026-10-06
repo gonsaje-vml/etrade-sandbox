@@ -106,6 +106,46 @@ function makePromo(item) {
   return card.children.length ? card : null;
 }
 
+/** Separate a list item's label from descriptions without including its child links. */
+function itemParts(item) {
+  const copy = item.cloneNode(true);
+  if (isColumnItem(copy)) copy.querySelector(':scope > p').remove();
+  copy.querySelectorAll('ul, picture, img').forEach((el) => el.remove());
+  const sourceLink = copy.querySelector('a');
+  const labelElement = sourceLink?.querySelector('strong') || sourceLink
+    || copy.querySelector('strong, p') || copy;
+  const range = document.createRange();
+  range.selectNodeContents(labelElement);
+  const lineBreak = labelElement.querySelector('br');
+  if (lineBreak) range.setEndBefore(lineBreak);
+  const label = range.toString().trim();
+  const link = sourceLink ? cleanLink(sourceLink) : null;
+  if (link) link.textContent = label;
+  range.deleteContents();
+  copy.querySelectorAll('br').forEach((br) => br.replaceWith(' '));
+  copy.querySelectorAll('p').forEach((p) => p.append(' '));
+  const description = copy.textContent.replace(/\s+/g, ' ').trim();
+  return { link, label, description };
+}
+
+function makeMenuLink(item) {
+  const { link, label, description } = itemParts(item);
+  const li = element('li');
+  if (link && label) li.append(link);
+  else if (label) li.append(element('span', 'nav-link-label', label));
+  if (description) li.append(element('p', 'nav-link-description', description));
+  const nested = item.querySelector(':scope > ul');
+  if (nested) {
+    const list = element('ul');
+    [...nested.children].forEach((child) => {
+      const childLink = makeMenuLink(child);
+      if (childLink) list.append(childLink);
+    });
+    if (list.children.length) li.append(list);
+  }
+  return li.children.length ? li : null;
+}
+
 /** Nested lists author columns; the imported flat list remains supported. */
 function makePanel(list) {
   const panel = element('div', 'nav-panel');
@@ -121,37 +161,27 @@ function makePanel(list) {
       return;
     }
     const nested = item.querySelector(':scope > ul');
-    const link = item.querySelector(':scope > a, :scope > p > a');
+    const { link, label, description } = itemParts(item);
     const url = link ? new URL(link.href) : null;
     const path = url && !url.hash ? url.pathname : '';
     if (explicitColumns || legacyColumnPaths.has(path) || !column) {
       column = element('div', 'nav-column');
       const heading = element('h2', 'nav-column-title');
-      if (link) heading.append(cleanLink(link));
-      else {
-        const copy = item.cloneNode(true);
-        if (isColumnItem(copy)) copy.querySelector(':scope > p').remove();
-        heading.textContent = itemLabel(copy);
-      }
+      if (link) heading.append(link);
+      else heading.textContent = label;
       if (heading.textContent.trim()) column.append(heading);
+      if (description) column.append(element('p', 'nav-column-description', description));
       column.append(element('ul', 'nav-column-links'));
       columns.append(column);
       if (nested) {
-        const description = item.querySelector(':scope > p > em');
-        if (description) heading.after(element('p', 'nav-column-description', description.textContent));
         [...nested.children].forEach((child) => {
-          const li = element('li');
-          [...child.childNodes].forEach((node) => li.append(node.cloneNode(true)));
-          li.querySelectorAll('a').forEach((a) => { a.className = ''; });
-          li.querySelectorAll('br').forEach((br) => br.remove());
-          column.querySelector('ul').append(li);
+          const li = makeMenuLink(child);
+          if (li) column.querySelector('ul').append(li);
         });
       }
     } else {
-      const li = element('li');
-      if (link) li.append(cleanLink(link));
-      else li.textContent = itemLabel(item);
-      column.querySelector('ul').append(li);
+      const li = makeMenuLink(item);
+      if (li) column.querySelector('ul').append(li);
     }
   });
   if (columns.children.length) panel.append(columns);

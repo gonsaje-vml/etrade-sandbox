@@ -403,7 +403,8 @@
   padding: 8px 0;
 }
 
-.header .nav-column-links a {
+.header .nav-column-links a,
+.header .nav-column-links .nav-link-label {
   display: block;
   padding: 0;
   font-size: 14px;
@@ -411,7 +412,8 @@
   line-height: 16px;
 }
 
-.header .nav-column-links em {
+.header .nav-column-links em,
+.header .nav-link-description {
   display: none;
   font-size: 12px;
   font-style: normal;
@@ -680,6 +682,7 @@
     margin-top: 4px;
     color: var(--header-muted-color);
     font-size: 12px;
+    font-weight: 400;
     line-height: 16px;
   }
 
@@ -687,7 +690,8 @@
     margin: 24px 0 0;
   }
 
-  .header .nav-column-links em {
+  .header .nav-column-links em,
+  .header .nav-link-description {
     display: block;
   }
 
