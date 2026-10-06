@@ -84,3 +84,7 @@ The shared DA document has not yet been migrated because authoring access is una
 - This is a public/prospect header. It does not infer login state from cookies or create an authenticated navigation experience. Those require an explicit identity integration and authored signed-in content.
 
 The current `/nav` fragment has fewer links/descriptions and different promotion copy than the live header. Author those changes in content for full menu-copy parity; the block never hardcodes offer amounts or terms.
+
+## Sandbox link destinations
+
+Optional page Metadata `Nav Link Base` accepts an HTTP(S) URL. Root-relative navigation links resolve against that authored base, while the `/home` brand link stays on the current site. For this sandbox homepage, use `https://us.etrade.com` until the destination pages exist locally. Absolute links and tracking parameters are retained. Omit this metadata to keep normal local navigation.

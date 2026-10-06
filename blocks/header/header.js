@@ -200,6 +200,21 @@ export default async function decorate(block) {
   if (!fragment && navPath === '/nav') fragment = await loadFragment('/content/nav');
   if (!fragment) return;
 
+  // Authors can use production destinations while only this homepage exists.
+  const navLinkBase = getMetadata('nav-link-base');
+  if (navLinkBase) {
+    try {
+      const base = new URL(navLinkBase);
+      if (['https:', 'http:'].includes(base.protocol)) {
+        fragment.querySelectorAll('a[href]').forEach((link) => {
+          const href = link.getAttribute('href');
+          if (href.startsWith('/') && !href.startsWith('//')
+            && new URL(href, base).pathname !== '/home') link.href = new URL(href, base).href;
+        });
+      }
+    } catch { /* Invalid metadata leaves authored destinations untouched. */ }
+  }
+
   const sections = [...fragment.children];
   const utilitySource = sections[0]?.querySelector('ul');
   const brandSource = selectBrand(sections[1], theme);
