@@ -7,3 +7,5 @@ Use a two-column **Disclosures** table. `Introduction` rows hold introductory ri
 Numeric superscripts in the page content link to existing numbered entries. A comma-separated reference such as `5,9` becomes two links. References are left unchanged when any target is missing. Numbered items have stable `disclosure-N` IDs and can receive focus after anchor navigation.
 
 A one-cell block containing a single document link also loads an authored disclosure document. Avoid using both inline disclosures and page Metadata to define duplicate entries. Update offer rates, dates, eligibility, tiers, and associated disclosure copy together.
+
+The disclosure area has a full-width light background. Its introduction, numbered disclosures, and closing copy stay centered with a maximum width of 1180px; the background continues through the side gutters and bottom padding.
