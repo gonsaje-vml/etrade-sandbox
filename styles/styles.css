@@ -376,3 +376,71 @@ main .section > .hero-dark-wrapper {
     padding: 0 10px;
   }
 }
+
+/* Homepage layout is selected through authored Template metadata. */
+body.homepage {
+  background: #fafafa;
+
+  --faq-gutter-offset: 0px;
+}
+
+body.homepage main > .section {
+  margin: 0;
+  padding: 40px 0;
+}
+
+body.homepage main > .section > div {
+  box-sizing: border-box;
+  max-width: 1220px;
+  padding: 0 20px;
+}
+
+body main > .section[data-section-kind="separator"],
+body main > .section[data-section-kind="overlay"] {
+  margin: 0;
+  padding: 0;
+}
+
+body main > .section[data-section-kind="separator"] > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+main > .section[data-separator-before] {
+  margin-top: 0;
+}
+
+main > .section[data-separator-after] {
+  margin-bottom: 0;
+}
+
+body.homepage main > .section.pricing-intro {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+body.homepage .pricing-intro .homepage-actions {
+  justify-content: center;
+  margin-top: 24px;
+}
+
+body.homepage main > .section.pricing-cards {
+  padding-top: 0;
+}
+
+body.homepage .pricing-cards > div + div {
+  margin-top: 20px;
+}
+
+body.homepage .pricing-cards .default-content-wrapper {
+  margin-top: 24px;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+}
+
+body.homepage .awards-section h2 {
+  margin: 0 0 32px;
+  text-align: center;
+}

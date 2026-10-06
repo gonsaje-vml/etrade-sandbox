@@ -2,7 +2,7 @@
   position: relative;
   left: 50%;
   box-sizing: border-box;
-  width: min(1180px, calc(100% + 8px));
+  width: min(1180px, calc(100% + var(--faq-gutter-offset, 8px)));
   padding: 40px 0 30px;
   transform: translateX(-50%);
   background: #fafafa;
@@ -214,7 +214,7 @@
 
 @media (width >= 768px) {
   .accordion-faq {
-    width: min(1180px, calc(100% + 28px));
+    width: min(1180px, calc(100% + var(--faq-gutter-offset, 28px)));
     font-size: 13px;
     line-height: 18px;
   }
@@ -260,7 +260,7 @@
 
 @media (width >= 900px) {
   .accordion-faq {
-    width: min(1180px, calc(100% + 44px));
+    width: min(1180px, calc(100% + var(--faq-gutter-offset, 44px)));
   }
 }
 

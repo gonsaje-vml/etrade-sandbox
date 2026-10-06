@@ -37,3 +37,7 @@ These settings color the divider itself. Author the neighboring sections' backgr
 The divider fills its section width without a fixed desktop width. Its 16px corner radius stays consistent when resized and shrinks only when the available height or distance to an edge cannot fit the corners. A ResizeObserver redraws the inline SVG when the block dimensions change. No image request, external dependency, animation, or site-wide autoblock is needed.
 
 The SVG and configuration are decorative and hidden from assistive technology. The block has no focusable controls, role, or announcement; reading and keyboard order of surrounding content stay intact. No Universal Editor model is required; this project uses Document Authoring.
+
+## Homepage section integration
+
+The real EDS section breaks remain before and after each dedicated Separator table. They still group blocks and apply Section Metadata. The shared section-layout helper identifies the dedicated divider section and removes its outer spacing/gutters; it does not merge sections or move their content. The neighboring sections retain their authored backgrounds and internal padding. A Separator sharing a section with content keeps that section's normal layout.

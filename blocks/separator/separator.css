@@ -1,15 +1,3 @@
-/* A dedicated divider section has no EDS gutters or vertical section spacing. */
-main > .section.separator-container:has(> .separator-wrapper:only-child) {
-  margin: 0;
-  padding: 0;
-}
-
-main > .section > .separator-wrapper {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
 .separator {
   position: relative;
   width: 100%;
