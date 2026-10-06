@@ -1,0 +1,82 @@
+.disclosures {
+  box-sizing: border-box;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  color: #242424;
+  font-size: 13px;
+  line-height: 18px;
+  overflow-wrap: anywhere;
+}
+
+.disclosures[hidden] {
+  display: none;
+}
+
+.disclosures .disclosures-intro,
+.disclosures .disclosures-items {
+  min-width: 0;
+}
+
+.disclosures .disclosures-items {
+  margin: 32px 0 0;
+  padding-left: 24px;
+}
+
+.disclosures .disclosures-items > li {
+  margin-bottom: 24px;
+  padding-left: 8px;
+  scroll-margin-top: 32px;
+}
+
+.disclosures :is(h2, h3, h4) {
+  margin: 0 0 16px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.disclosures p {
+  margin: 0 0 12px;
+}
+
+.disclosures a:any-link {
+  color: #5627d8;
+  text-decoration: underline;
+}
+
+.disclosures a:focus-visible,
+.disclosures li:focus {
+  outline: 2px solid #5627d8;
+  outline-offset: 3px;
+}
+
+.disclosures :is(img, table) {
+  max-width: 100%;
+}
+
+.disclosures img {
+  width: auto;
+  max-height: 48px;
+}
+
+@media (width < 768px) {
+  .disclosures {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+.disclosures table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.disclosures :is(th, td) {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.disclosures .disclosures-closing {
+  margin-top: 32px;
+}
